@@ -1,4 +1,4 @@
-<script src="https://cdn.jsdelivr.net/npm/jquery@2.2.1"></script>
+<script src="/theme/material/js/jquery.min.js"></script>
 <style>
     .btn-price {
         margin: 5px;

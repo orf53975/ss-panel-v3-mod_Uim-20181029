@@ -1,9 +1,6 @@
 ﻿﻿
 {include file='user/main.tpl'}
 
-<!-- <script src="//cdn.jsdelivr.net/gh/YihanH/canvasjs.js@v2.2/canvasjs.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1"></script> -->
-
 <script src="/theme/material/js/canvasjs.js"></script>
 <script src="/theme/material/js/jquery.min.js"></script>
 
