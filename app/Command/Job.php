@@ -795,10 +795,7 @@ class Job
             }
 
 			
-            if (Config::get('auto_clean_uncheck_days')>0 && 
-				max($user->last_check_in_time, strtotime($user->reg_date)) + (Config::get('auto_clean_uncheck_days')*86400) < time() && 
-				$user->class == 0 && 
-				$user->money <= Config::get('auto_clean_min_money')
+            if (Config::get('auto_clean_uncheck_days')>0 && max($user->last_check_in_time, strtotime($user->reg_date)) + (Config::get('auto_clean_uncheck_days')*86400) < time() && $user->class == 0 && $user->money <= Config::get('auto_clean_min_money')
 			) {
                 $subject = Config::get('appName')."-您的用户账户已经被删除了";
                 $to = $user->email;
@@ -945,7 +942,8 @@ class Job
 			}
 
 
-            if ($user->class!=0 && strtotime($user->class_expire)<time() && strtotime($user->class_expire) > 1420041600){
+            if ($user->class!=0 && strtotime($user->class_expire)<time() && strtotime($user->class_expire) > 1420041600) 
+			{
 				$reset_traffic=max(Config::get('class_expire_reset_traffic'),0);
 				$user->transfer_enable =Tools::toGB($reset_traffic);				
                 $user->u = 0;
@@ -958,7 +956,7 @@ class Job
 
                 $subject = Config::get('appName')."-您的账号等级已经过期了";
                 $to = $user->email;
-                $text = "您好，系统发现您的账号等级已经过期了，账号已被暂停使用，账号过期  ".Config::get('enable_account_expire_delete_days')."   天以上将自动删除，为不影响您的正常使用，请及时登陆网站到商店购买套餐重新激活账号，如有疑问，请登陆网站发工单联系管理员，谢谢！" ;
+                $text = "您好，系统发现您的账号等级已经过期了，账号已被暂停使用，账号过期  7  天以上将自动删除，为不影响您的正常使用，请及时登陆网站到商店购买套餐重新激活账号，如有疑问，请登陆网站发工单联系管理员，谢谢！" ;
                     try {
                     Mail::send($to, $subject, 'news/warn.tpl', [
                         "user" => $user,"text" => $text
