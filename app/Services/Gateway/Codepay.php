@@ -38,6 +38,7 @@ class Codepay extends AbstractPayment
     {
         $codepay_id = Config::get('codepay_id');//这里改成码支付ID
         $codepay_key = Config::get('codepay_key'); //这是您的通讯密钥
+		$payurl2=Config::get('baseUrl'); //这是您的支付通知地址
         $user = Auth::getUser();
         $price = $request->getParam('price');
         $type = $request->getParam('type');
@@ -56,7 +57,7 @@ class Codepay extends AbstractPayment
             "type" => $type,//1支付宝支付 2QQ钱包 3微信支付
             "price" => $price,//金额100元
             "param" => "",//自定义参数
-            "notify_url" => $url . '/payment/notify',//通知地址
+            "notify_url" => $payurl2 . '/payment/notify',//通知地址
             "return_url" => $url . '/user/code',//跳转地址
         ); //构造需要传递的参数
 
@@ -104,7 +105,7 @@ class Codepay extends AbstractPayment
             $price = (float)$_POST['price']; //订单的原价
             //$param = $_POST['param']; //自定义参数
             $pay_no = $_POST['pay_no']; //流水号
-            self::postPayment($pay_id, "码支付");
+            self::postPayment($pay_id, $pay_no);
         }
 
         exit('success'); //返回成功 不要删除哦

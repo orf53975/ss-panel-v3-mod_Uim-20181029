@@ -45,8 +45,13 @@ abstract class AbstractPayment
         $codeq->save();
 
         if ($user->ref_by >= 1) {
+			
+			//首次返利
+			$ref_Payback=Payback::where("ref_by", "=", $user->ref_by)->where("userid", "=", $user->id)->first();
+			if ($ref_Payback->userid != $user->id && $ref_Payback->ref_by != $user->ref_by ) {
+				
             $gift_user=User::where("id", "=", $user->ref_by)->first();
-            $gift_user->money=($gift_user->money+($codeq->number*(Config::get('code_payback')/100)));
+            $gift_user->fanli=($gift_user->fanli+($codeq->number*(Config::get('code_payback')/100)));
             $gift_user->save();
             $Payback=new Payback();
             $Payback->total=$codeq->number;
@@ -56,6 +61,7 @@ abstract class AbstractPayment
             $Payback->datetime=time();
             $Payback->save();
         }
+		}
 
         if (Config::get('enable_donate') == 'true') {
             if ($user->is_hide == 1) {
