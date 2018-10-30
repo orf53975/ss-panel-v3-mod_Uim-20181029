@@ -2,8 +2,6 @@
 .DS_Store
 config/.config.php
 config/.config.php.bak
-404.html
-index.html
 public/ssr-download/
 storage/trimepay_notify.log
 storage/traffic_notified/
