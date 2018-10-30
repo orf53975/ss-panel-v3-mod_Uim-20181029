@@ -36,7 +36,7 @@ class AnnController extends AdminController
         $ann = new Ann();
         $ann->date =  date("Y-m-d H:i:s");
         $ann->content =  $request->getParam('content');
-       
+       $ann->markdown =  $request->getParam('content');
         
        
         if (!$ann->save()) {

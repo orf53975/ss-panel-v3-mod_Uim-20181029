@@ -72,14 +72,6 @@
     $(document).ready(function () {
         function submit() {
           
-          	if(document.getElementById('issend').checked)
-			{
-				var issend=1;
-			}
-			else
-			{
-				var issend=0;
-			}
           
             $.ajax({
                 type: "POST",
@@ -87,8 +79,6 @@
                 dataType: "json",
                 data: {
                     content: $("#content").val()
-                  	
-                  	
                 },
                 success: function (data) {
                     if (data.ret) {
