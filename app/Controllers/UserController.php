@@ -1429,11 +1429,11 @@ class UserController extends BaseController
 
     public function ticket_add($request, $response, $args)
     {
-        $title = $request->getParam('title');
+       // $title = $request->getParam('title');
         $content = $request->getParam('content');
 
 
-        if ($title == "" || $content == "") {
+        if ($content == "") {
             $res['ret'] = 0;
             $res['msg'] = "请填全";
             return $this->echoJson($response, $res);
@@ -1450,7 +1450,7 @@ class UserController extends BaseController
 
         $antiXss = new AntiXSS();
 
-        $ticket->title = $antiXss->xss_clean($title);
+       // $ticket->title = $antiXss->xss_clean($title);
         $ticket->content = $antiXss->xss_clean($content);
         $ticket->rootid = 0;
         $ticket->userid = $this->user->id;
@@ -1494,7 +1494,7 @@ class UserController extends BaseController
         $content = $request->getParam('content');
         $status = $request->getParam('status');
 
-        if ($content == "" || $status == "") {
+        if ($content == "") {
             $res['ret'] = 0;
             $res['msg'] = "请填全";
             return $this->echoJson($response, $res);
@@ -1570,7 +1570,7 @@ class UserController extends BaseController
         $antiXss = new AntiXSS();
 
         $ticket = new Ticket();
-        $ticket->title = $antiXss->xss_clean($ticket_main->title);
+       // $ticket->title = $antiXss->xss_clean($ticket_main->title);
         $ticket->content = $antiXss->xss_clean($content);
         $ticket->rootid = $ticket_main->id;
         $ticket->userid = $this->user->id;
