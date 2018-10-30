@@ -102,7 +102,7 @@ class ChenPay extends AbstractPayment
         $amount = $request->getParam('fee');
         $url = $request->getParam('url');
         if (!is_numeric($amount) || !is_numeric($type)) return json_encode(['ret' => 0, 'msg' => '请输入正确金额']);
-        elseif ($amount < 15) return json_encode(['ret' => 0, 'msg' => '请输入大于 15 元的金额']);
+        elseif ($amount <= 0) return json_encode(['ret' => 0, 'msg' => '请输入正确金额']);
 
         $user = Auth::getUser();
         if (!Paylist::where('status', 0)->where('type', $type)->where('total', $amount)->where('datetime', '>', time())->first()) {
@@ -218,7 +218,7 @@ class ChenPay extends AbstractPayment
                 $order = $run->DataContrast($item->total, $item->datetime);
                 if ($order) {
                     $log .= $order . "订单有效\n";
-                    ChenPay::postPayment($item->tradeno, $order);
+                    ChenPay::postPayment($item->tradeno, 'chenPay支付宝支付' . $order);
                 }
             }
             $log .= "支付宝监听第" . $that->getConfig('AliSum') . "次运行" . "[" . date('Y-m-d H:i:s') . "]\n";
@@ -251,7 +251,7 @@ class ChenPay extends AbstractPayment
                 $order = $run->DataContrast($item->total, $item->datetime);
                 if ($order) {
                     $log .= $order . "订单有效\n";
-                    ChenPay::postPayment($item->tradeno, $order);
+                    ChenPay::postPayment($item->tradeno, 'chenPay微信支付' . $order);
                 }
             }
             $log .= "微信监听第" . $that->getConfig('WxSum') . "次运行" . "[" . date('Y-m-d H:i:s') . "]\n";
