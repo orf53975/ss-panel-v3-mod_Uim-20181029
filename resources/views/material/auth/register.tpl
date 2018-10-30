@@ -26,22 +26,10 @@
 								{if $config['register_mode']!='close'}
 								<div class="card-inner">
 
-
-								{*
 										<div class="form-group form-group-label">
 											<div class="row">
 												<div class="col-md-10 col-md-push-1">
-													<label class="floating-label" for="name">昵称</label>
-													<input class="form-control" id="name" type="text">
-												</div>
-											</div>
-										</div>
-										*}
-
-										<div class="form-group form-group-label">
-											<div class="row">
-												<div class="col-md-10 col-md-push-1">
-													<label class="floating-label" for="email">邮箱(唯一凭证请认真对待)</label>
+													<label class="floating-label" for="email">邮箱(不能使用QQ邮箱)</label>
 													<input class="form-control" id="email" type="text">
 												</div>
 											</div>
@@ -69,43 +57,6 @@
 												</div>
 											</div>
 										</div>
-
-										{*
-										<div class="form-group form-group-label">
-											<div class="row">
-												<div class="col-md-10 col-md-push-1">
-													<label class="floating-label" for="repasswd">重复密码</label>
-													<input class="form-control" id="repasswd" type="password">
-												</div>
-											</div>
-										</div>
-
-
-										<div class="form-group form-group-label">
-											<div class="row">
-												<div class="col-md-10 col-md-push-1">
-													<label class="floating-label" for="imtype">选择您的联络方式</label>
-													<select class="form-control" id="imtype">
-														<option></option>
-														<option value="1">微信</option>
-														<option value="2">QQ</option>
-														<option value="3">Facebook</option>
-														<option value="4">Telegram</option>
-													</select>
-												</div>
-											</div>
-										</div>
-
-
-										<div class="form-group form-group-label">
-											<div class="row">
-												<div class="col-md-10 col-md-push-1">
-													<label class="floating-label" for="wechat">在这输入联络方式账号</label>
-													<input class="form-control" id="wechat" type="text">
-												</div>
-											</div>
-										</div>
-										*}
 
 										{if $config['register_mode'] == 'invite'}
 											<div class="form-group form-group-label">
@@ -173,7 +124,7 @@
 										{include file='reg_tos.tpl'}
 									</div>
 									<div class="modal-footer">
-										<p class="text-right"><button class="btn btn-flat btn-brand-accent waves-attach waves-effect" data-dismiss="modal" type="button" id="cancel">我不同意</button>
+										<p class="text-right"><button class="btn btn-flat btn-brand-accent waves-attach waves-effect" data-dismiss="modal" type="button" id="cancel">我拒绝</button>
                                           <button class="btn btn-flat btn-brand-accent waves-attach waves-effect" data-dismiss="modal" id="reg" type="button">我同意</button>
                                       </p>
 									</div>

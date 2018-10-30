@@ -186,6 +186,18 @@ class Job
                   } catch (\Exception $e) {
                       echo $e->getMessage();
                   }
+				  								
+         //增加邮件记录
+
+		$antiXss = new AntiXSS();
+		$emailjilu = new Emailjilu();
+		$emailjilu->userid = $user->id;
+		$emailjilu->username = $user->user_name;
+		$emailjilu->useremail = $user->email;
+		$emailjilu->biaoti = $antiXss->xss_clean($subject);
+		$emailjilu->neirong = $antiXss->xss_clean($text);
+		$emailjilu->datetime = time();
+		$emailjilu->save();
                 }
               }
             }
