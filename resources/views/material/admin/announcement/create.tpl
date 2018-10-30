@@ -24,7 +24,7 @@
 							<div class="card-inner">
 								<div class="form-group form-group-label">
 									<label class="floating-label" for="content">内容</label>
-									<textarea class="form-control" id="content" rows="8"></textarea>
+									<textarea class="form-control" id="content"></textarea>
 								</div>
 								
 								
