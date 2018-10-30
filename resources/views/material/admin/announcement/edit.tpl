@@ -25,10 +25,8 @@
 							<div class="card-inner">
 								<div class="form-group form-group-label">
 									<label class="floating-label" for="content">内容</label>
-									<link rel="stylesheet" href="/theme/material/css/editormd.min.css" />
-									<div id="editormd">
-										<textarea style="display:none;" id="content">{$ann->markdown}</textarea>
-									</div>
+									<textarea class="form-control" id="content" rows="15">{$ann->content}</textarea>
+									
 								</div>
 								
 								
@@ -64,19 +62,10 @@
 		</div>
 	</main>
 
-	
-	
-	
-	
-
-
-
-
 
 
 {include file='admin/footer.tpl'}
 
-<script src="/theme/material/js/editormd.min.js"></script>
 <script>
     $(document).ready(function () {
         function submit() {
@@ -84,9 +73,8 @@
                 type: "PUT",
                 url: "/admin/announcement/{$ann->id}",
                 dataType: "json",
-                data: {
-                    content: editor.getHTML(),
-					markdown: editor.getMarkdown()
+                data: {                  
+					content: $("#content").val()				
                 },
                 success: function (data) {
                     if (data.ret) {
@@ -112,20 +100,5 @@
 
     });
 	
-    $(function() {
-        editor = editormd("editormd", {
-             path : "https://cdn.jsdelivr.net/npm/editor.md@1.5.0/lib/", // Autoload modules mode, codemirror, marked... dependents libs path
-			height: 720,
-			saveHTMLToTextarea : true,
-			emoji : true
-        });
-
-        /*
-        // or
-        var editor = editormd({
-            id   : "editormd",
-            path : "../lib/"
-        });
-        */
-    });
+    
 </script>

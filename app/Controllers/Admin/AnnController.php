@@ -36,9 +36,8 @@ class AnnController extends AdminController
         $ann = new Ann();
         $ann->date =  date("Y-m-d H:i:s");
         $ann->content =  $request->getParam('content');
-       $ann->markdown =  $request->getParam('content');
+        $ann->markdown =  $request->getParam('content');
         
-       
         if (!$ann->save()) {
             $rs['ret'] = 0;
             $rs['msg'] = "添加失败";
@@ -46,7 +45,7 @@ class AnnController extends AdminController
         }
         
         $rs['ret'] = 1;
-        $rs['msg'] = "公告添加成功，邮件发送成功";
+        $rs['msg'] = "公告添加成功";
         return $response->getBody()->write(json_encode($rs));
     }
 
@@ -65,7 +64,7 @@ class AnnController extends AdminController
         $ann = Ann::find($id);
 
         $ann->content =  $request->getParam('content');
-        $ann->markdown =  $request->getParam('markdown');
+        $ann->markdown =  $request->getParam('content');
         $ann->date =  date("Y-m-d H:i:s");
 
         if (!$ann->save()) {
@@ -74,8 +73,7 @@ class AnnController extends AdminController
             return $response->getBody()->write(json_encode($rs));
         }
 
-        Telegram::SendMarkdown("公告更新：".PHP_EOL.$request->getParam('markdown'));
-
+       
         $rs['ret'] = 1;
         $rs['msg'] = "修改成功";
         return $response->getBody()->write(json_encode($rs));
