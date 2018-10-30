@@ -53,7 +53,7 @@
 								<div class="shop-name">{$shop->name}</div>
 								<div class="shop-price">价格：<code>{$shop->price}</code> 元</div>
 								<div class="shop-content">
-								{if $shop->id==57}
+								{if $shop->id==68}
 								<div>账号流量重置为 <code>{$shop->bandwidth()}</code> G</div>
 								<div>仅适合流量已用完的用户使用</div>
 								<div>不增加等级和等级到期时间</div>
