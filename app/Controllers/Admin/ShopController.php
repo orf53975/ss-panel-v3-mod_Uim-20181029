@@ -46,7 +46,7 @@ class ShopController extends AdminController
             $content["bandwidth"]=$request->getParam('bandwidth');
         }
 //取消账号有效期输入
-        if ($request->getParam('expire')!=0) {
+        if ($request->getParam('class_expire')!=0) {
             $content["expire"]=$request->getParam('class_expire');
         }
 
@@ -127,7 +127,7 @@ class ShopController extends AdminController
             $content["bandwidth"]=$request->getParam('bandwidth');
         }
 //取消账号有效期输入
-        if ($request->getParam('expire')!=0) {
+        if ($request->getParam('class_expire')!=0) {
             $content["expire"]=$request->getParam('class_expire');
         }
 
