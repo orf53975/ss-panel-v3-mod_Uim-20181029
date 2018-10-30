@@ -23,10 +23,7 @@
 							<div class="card-inner">
 								<div class="form-group form-group-label">
 									<label class="floating-label" for="content">内容</label>
-									<link rel="stylesheet" href="/theme/material/css/editormd.min.css" />
-									<div id="editormd">
-										<textarea style="display:none;" id="content"></textarea>
-									</div>
+									<textarea class="form-control" id="content" rows="15"></textarea>
 								</div>
 								
 								
@@ -92,7 +89,7 @@
 
 
 
-<script src="/theme/material/js/editormd.min.js"></script>
+
 <script>
     $(document).ready(function () {
         function submit() {
@@ -103,8 +100,8 @@
                 url: "/user/ticket/{$id}",
                 dataType: "json",
                 data: {
-                    content: editor.getHTML(),
-					title: $("#title").val(),
+                    content: $("#content").val(),
+					
 					status:status
                 },
                 success: function (data) {
@@ -136,22 +133,6 @@
         });
     });
 	
-    $(function() {
-        editor = editormd("editormd", {
-             path : "https://cdn.jsdelivr.net/npm/editor.md@1.5.0/lib/", // Autoload modules mode, codemirror, marked... dependents libs path
-			height: 450,
-			saveHTMLToTextarea : true,
-			emoji : true
-        });
-
-        /*
-        // or
-        var editor = editormd({
-            id   : "editormd",
-            path : "../lib/"
-        });
-        */
-    });
 </script>
 
 

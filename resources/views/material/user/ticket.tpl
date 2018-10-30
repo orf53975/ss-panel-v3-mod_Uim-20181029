@@ -34,7 +34,7 @@
 								
                               <!--  <th>ID</th>   -->
                                 <th>发起日期</th>
-                                <th>工单标题</th>
+                                
 								<th>工单状态</th>
                                <th>操作</th>
                             </tr>
@@ -43,7 +43,7 @@
 									
                                  <!--   <td>#{$ticket->id}</td>  -->
                                     <td>{$ticket->datetime()}</td>
-                                    <td>{$ticket->title}</td>
+                                    
 									{if $ticket->status==1}
 									<td>工单服务中</td>
 									{else}

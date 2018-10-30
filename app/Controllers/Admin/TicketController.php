@@ -23,7 +23,7 @@ class TicketController extends AdminController
     public function index($request, $response, $args)
     {
         $table_config['total_column'] = array("op" => "操作", "id" => "ID",
-                              "datetime" => "时间", "title" => "标题", "userid" => "用户ID",
+                              "datetime" => "时间", "userid" => "用户ID",
                               "user_name" => "用户名", "status" => "状态");
         $table_config['default_show_column'] = array("op", "id",
                                   "datetime", "title", "userid", "user_name", "status");
@@ -86,7 +86,7 @@ class TicketController extends AdminController
         $antiXss = new AntiXSS();
 
         $ticket=new Ticket();
-        $ticket->title=$antiXss->xss_clean($ticket_main->title);
+       // $ticket->title=$antiXss->xss_clean($ticket_main->title);
         $ticket->content=$antiXss->xss_clean($content);
         $ticket->rootid=$ticket_main->id;
         $ticket->userid=Auth::getUser()->id;
@@ -120,7 +120,7 @@ class TicketController extends AdminController
     public function ajax($request, $response, $args)
     {
         $datatables = new Datatables(new DatatablesHelper());
-        $datatables->query('Select ticket.id as op,ticket.id,ticket.datetime,ticket.title,ticket.userid,user.user_name,ticket.status from ticket,user where ticket.userid = user.id and ticket.rootid = 0');
+        $datatables->query('Select ticket.id as op,ticket.id,ticket.datetime,ticket.userid,user.user_name,ticket.status from ticket,user where ticket.userid = user.id and ticket.rootid = 0');
 
         $datatables->edit('op', function ($data) {
             return '<a class="btn btn-brand" href="/admin/ticket/'.$data['id'].'/view">查看</a>';
