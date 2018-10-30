@@ -24,13 +24,10 @@
 							<div class="card-inner">
 								<div class="form-group form-group-label">
 									<label class="floating-label" for="content">内容</label>
-									<textarea class="form-control" id="content" rows="8"></textarea>
-									
-									<!-- <link rel="stylesheet" href="/theme/material/css/editormd.min.css" />
-									<div id="editormd">
+									<link rel="stylesheet" href="/theme/material/css/editormd.min.css" />
+									<div>
 										<textarea style="display:none;" id="content"></textarea>
 									</div>
-									-->
 								</div>
 								
 								
