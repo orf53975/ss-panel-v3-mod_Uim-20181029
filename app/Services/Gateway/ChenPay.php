@@ -218,7 +218,7 @@ class ChenPay extends AbstractPayment
                 $order = $run->DataContrast($item->total, $item->datetime);
                 if ($order) {
                     $log .= $order . "订单有效\n";
-                    ChenPay::postPayment($item->tradeno, 'chenPay支付宝支付' . $order);
+                    ChenPay::postPayment($item->tradeno, $order);
                 }
             }
             $log .= "支付宝监听第" . $that->getConfig('AliSum') . "次运行" . "[" . date('Y-m-d H:i:s') . "]\n";
@@ -251,7 +251,7 @@ class ChenPay extends AbstractPayment
                 $order = $run->DataContrast($item->total, $item->datetime);
                 if ($order) {
                     $log .= $order . "订单有效\n";
-                    ChenPay::postPayment($item->tradeno, 'chenPay微信支付' . $order);
+                    ChenPay::postPayment($item->tradeno, $order);
                 }
             }
             $log .= "微信监听第" . $that->getConfig('WxSum') . "次运行" . "[" . date('Y-m-d H:i:s') . "]\n";
