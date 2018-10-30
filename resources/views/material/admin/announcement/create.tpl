@@ -24,12 +24,8 @@
 							<div class="card-inner">
 								<div class="form-group form-group-label">
 									<label class="floating-label" for="content">内容</label>
-									<textarea class="form-control" id="content"></textarea>
-								</div>
-								
-								
-								
-								
+									<textarea class="form-control" id="content" rows="15"></textarea>
+								</div>						
 							</div>
 						</div>
 					</div>
@@ -42,17 +38,7 @@
 								
 								<div class="form-group">
 									<div class="row">
-										<div class="col-md-10 col-md-push-1">
-                                         <div class="form-group form-group-label">
-                                          	<label class="floating-label" for="vip">VIP等级（发送给高于这个等级的用户 0为不分级）</label>
-											<input class="form-control" id="vip" type="text" name="vip">
-                                           <div class="checkbox switch">
-											<label for="issend">
-												<input class="access-hide" id="issend" type="checkbox" name="issend"><span class="switch-toggle"></span>是否发送邮件
-											</label>
-											</div>
-										</div>
-                                         
+										<div class="col-md-10 col-md-push-1">                                    
 											<button id="submit" type="submit" class="btn btn-block btn-brand waves-attach waves-light">添加</button>
 										</div>
 									</div>
@@ -61,7 +47,7 @@
 						</div>
 					</div>
                   
-					
+				</section>
 					{include file='dialog.tpl'}
 			</div>
 			
@@ -100,9 +86,9 @@
                 url: "/admin/announcement",
                 dataType: "json",
                 data: {
-                    content: $("#content").val(),
-                  	vip: $("#vip").val(),
-                  	issend: issend
+                    content: $("#content").val()
+                  	
+                  	
                 },
                 success: function (data) {
                     if (data.ret) {

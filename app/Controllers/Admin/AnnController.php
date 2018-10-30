@@ -36,48 +36,15 @@ class AnnController extends AdminController
         $ann = new Ann();
         $ann->date =  date("Y-m-d H:i:s");
         $ann->content =  $request->getParam('content');
-        $ann->markdown =  $request->getParam('markdown');
-        $issend = $request->getParam('issend');
-        $vip = $request->getParam('vip');
-        $users = User::all();
+       
+        
+       
         if (!$ann->save()) {
             $rs['ret'] = 0;
             $rs['msg'] = "添加失败";
             return $response->getBody()->write(json_encode($rs));
         }
-        if ($issend == 1){
-            foreach($users as $user){
-                if ($user->class >= $vip){
-                    $subject = Config::get('appName')."-公告";
-                    $to = $user->email;
-                    if (!filter_var($to, FILTER_VALIDATE_EMAIL)) {
-                    	continue;
-                    }
-                    $text = $ann->content;
-                    try {
-                        Mail::send($to, $subject, 'news/warn.tpl', [
-                            "user" => $user,"text" => $text
-                        ], [
-                        ]);
-                    } catch (\Exception $e) {
-                        continue;
-                    }
-									
-		$antiXss = new AntiXSS();
-		$emailjilu = new Emailjilu();
-		$emailjilu->userid = $user->id;
-		$emailjilu->username = $user->user_name;
-		$emailjilu->useremail = $user->email;
-		$emailjilu->biaoti = $antiXss->xss_clean($subject);
-		$emailjilu->neirong = $antiXss->xss_clean($text);
-		$emailjilu->datetime = time();
-		$emailjilu->save();
-		
-                }
-            }
-        }
-
-        Telegram::SendMarkdown("新公告：".PHP_EOL.$request->getParam('markdown'));
+        
         $rs['ret'] = 1;
         $rs['msg'] = "公告添加成功，邮件发送成功";
         return $response->getBody()->write(json_encode($rs));
