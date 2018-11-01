@@ -38,7 +38,7 @@ class Codepay extends AbstractPayment
     {
         $codepay_id = Config::get('codepay_id');//这里改成码支付ID
         $codepay_key = Config::get('codepay_key'); //这是您的通讯密钥
-		$payurl2=Config::get('baseUrl'); //这是您的支付通知地址
+		$payurl2=Config::get('payurl2'); //这是您的支付通知地址
         $user = Auth::getUser();
         $price = $request->getParam('price');
         $type = $request->getParam('type');
@@ -46,7 +46,8 @@ class Codepay extends AbstractPayment
         $pl = new Paylist();
         $pl->userid = $user->id;
         $pl->total = $price;
-        $pl->tradeno = $user->id;
+        //$pl->tradeno = $user->id;
+		$pl->tradeno = self::generateGuid();
         $pl->save();
 
 
