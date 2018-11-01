@@ -63,6 +63,7 @@ $System_Config['mailgun_sender'] = '';
 
 # smtp
 $System_Config['smtp_host'] = '';
+$System_Config['smtp_username'] = '';
 $System_Config['smtp_port'] = '';
 $System_Config['smtp_sender'] = '';
 $System_Config['smtp_passsword'] = '';
