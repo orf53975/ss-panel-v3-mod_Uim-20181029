@@ -123,11 +123,11 @@
 																					{$config["vmesstcp"]}
 																				</span></p>
 																			
-																                {*
+																                
 																				<p>协议参数：<span class="label label-green">
 																					{$server_explode[0]}
 																				</span></p>
-																				*}
+																				
 
 																				<p>AlterId：<span class="label label-green">
 																					{$server_explode[3]}
