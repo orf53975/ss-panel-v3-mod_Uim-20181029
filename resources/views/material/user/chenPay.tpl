@@ -18,7 +18,7 @@
 <div class="card-inner">
     <div class="form-group pull-left">
         <p class="modal-title">支付宝/微信在线充值</p>
-		<p>1，支付宝/微信充值，支持  '.Config::get('codypaymenay').'  元以上任意金额，在下方输入充值金额，支付金额必须要和输入金额一致，点击支付宝/微信图标，扫码支付，
+		<p>1，支付宝/微信充值，支持  15  元以上任意金额，在下方输入充值金额，支付金额必须要和输入金额一致，点击支付宝/微信图标，扫码支付，
 		<br>2，<font color="red">付款时不能关闭二维码页面，否则无法自动到账</font>，支付成功等待网页自动跳转提示，没提示前不要关闭二维码页面，付款时不能填备注，否则可能会导致无法自动到账。
 		</p>
         {if preg_match('/\|/', $config['Pay_Price'])}
@@ -28,7 +28,7 @@
             {foreach $data as $key => $item}
                 <a class="btn btn-price {if $key == 0}active{/if}" price="{$item}" type="{$key}">{$item}元</a>
             {/foreach}
-            <input type="hidden" id="AliPayType" class="form-control" name="amount" autofocus="autofocus" type="number" min="15" max="1000" step="1" required="required" />
+            <input type="hidden" id="AliPayType" class="form-control" name="amount" />
             {else}
 
             <p>输入充值金额：</p>
