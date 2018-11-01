@@ -24,7 +24,7 @@
 						<div class="card-main">
 							<div class="card-inner">
 								<div class="form-group form-group-label">
-									<label class="floating-label" for="content">内容</label>
+									<label class="floating-label" for="content">点击这里修改内容</label>
 									<textarea class="form-control" id="content" rows="15">{$ann->content}</textarea>
 									
 								</div>
