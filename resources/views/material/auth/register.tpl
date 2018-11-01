@@ -91,7 +91,7 @@
 										<div class="form-group">
 											<div class="row">
 												<div class="col-md-10 col-md-push-1">
-													<p>注册即代表同意<a href="/tos">服务条款</a>，以及保证所录入信息的真实性，如有不实信息会导致账号被删除。</p>
+													<p>注册即代表同意<a href="/toos">服务条款</a>，以及保证所录入信息的真实性，如有不实信息会导致账号被删除。</p>
 												</div>
 											</div>
 										</div>
