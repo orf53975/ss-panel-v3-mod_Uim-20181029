@@ -47,7 +47,7 @@ class Codepay extends AbstractPayment
         $pl->userid = $user->id;
         $pl->total = $price;
         //$pl->tradeno = $this->user->id;
-		$pl->tradeno = self::generateGuid();
+		$pl->tradeno = (string)time()."UID".(string)$user->id;
         $pl->save();
 
 

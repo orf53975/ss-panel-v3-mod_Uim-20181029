@@ -79,7 +79,7 @@
 																				</span></p>
 																				
 																				<p>协议：<span class="label label-green">
-																					{$server_explode[2]}
+																					{$server_explode[3]}
 																				</span></p>
 																				
 																				<p>用户 UUID：<span class="label label-brand">
@@ -89,25 +89,11 @@
 																				<p>加密算法(推荐)：<span class="label label-green">
 																					{$config["metodaes"]}
 																				</span></p>
-																				
-																				<p>传输协议：<span class="label label-red">
-																					{$config["vmesstcp"]}
-																				</span></p>
-																			
-																                {*
-																				<p>协议参数：<span class="label label-green">
-																					{$server_explode[0]}
-																				</span></p>
-																				*}
-
+																																				                
 																				<p>AlterId：<span class="label label-green">
-																					{$server_explode[3]}
+																					{$server_explode[2]}
 																				</span></p>
 
-																				<p>Level：<span class="label label-brand">
-																					{$server_explode[4]}
-																				</span></p>
-																				
 																				<p>流量比例：<span class="label label-red">
 																					{$node->traffic_rate}
 																				</span></p>
