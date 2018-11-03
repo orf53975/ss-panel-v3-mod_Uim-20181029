@@ -78,7 +78,7 @@
 																					{$server_explode[1]}
 																				</span></p>
 																				
-																				<p>协议：<span class="label label-green">
+																				<p>传输协议：<span class="label label-green">
 																					{$server_explode[3]}
 																				</span></p>
 																				
