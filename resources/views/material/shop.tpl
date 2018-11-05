@@ -63,14 +63,14 @@
 								{else}
 								
 								{if $shop->auto_reset_day!=0}
-								<div>可使用SSR节点和V2RAY节点</div>
+								<div>可使用VIP节点和SVIP节点</div>
 								
 								<div>为账号添加流量 <code>{$shop->bandwidth()}</code> G</div>
 								<div>为账号等级有效期添加 <code>{$shop->class_expire()}</code> 天</div>
 								<div>每月自动重置流量为 <code>{$shop->bandwidth()}</code> G</div>
 								
 									{else}
-                                    <div>可使用SSR节点</div>
+                                    <div>可使用VIP节点</div>
 									<div>为账号添加流量 <code>{$shop->bandwidth()}</code> G</div>
 									<div>为账号等级有效期添加 <code>{$shop->class_expire()}</code> 天</div>
 									
