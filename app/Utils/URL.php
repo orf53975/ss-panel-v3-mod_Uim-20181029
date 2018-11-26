@@ -156,29 +156,30 @@ class URL
                 }
             )->where("type", "1")->where("node_class", "<=", $user->class)->orderBy("name")->get();
         }
+
         if($is_mu) {
             if ($user->is_admin) {
-            	//if ($is_mu!=1){
-            	//	$mu_nodes = Node::where('sort', 9)->where('server', '=', $is_mu)->where("type", "1")->get();
-            	//}else{
+            	if ($is_mu!=1){
+            		$mu_nodes = Node::where('sort', 9)->where('server', '=', $is_mu)->where("type", "1")->get();
+            	}else{
                 	$mu_nodes = Node::where('sort', 9)->where("type", "1")->get();
-            	//}
+            	}
             } else {
-               /* if ($is_mu!=1){
+                if ($is_mu!=1){
                     $mu_nodes = Node::where('sort', 9)->where('server', '=', $is_mu)->where('node_class', '<=', $user->class)->where("type", "1")->where(
                         function ($query) use ($user) {
                             $query->where("node_group", "=", $user->node_group)
                                 ->orWhere("node_group", "=", 0);
                         }
                     )->get();
-                }else{*/
+                }else{
                     $mu_nodes = Node::where('sort', 9)->where('node_class', '<=', $user->class)->where("type", "1")->where(
                         function ($query) use ($user) {
                             $query->where("node_group", "=", $user->node_group)
                                 ->orWhere("node_group", "=", 0);
                         }
                     )->get();
-               // }
+                }
             }
         }
         $relay_rules = Relay::where('user_id', $user->id)->orwhere('user_id', 0)->orderBy('id', 'asc')->get();
@@ -186,7 +187,7 @@ class URL
             $relay_rules = array();
         }
         foreach ($nodes as $node) {
-            if ($is_mu == 0) {
+            if ($node->mu_only != 1 && $is_mu == 0) {
                 if ($node->sort == 10) {
                     $relay_rule_id = 0;
                     $relay_rule = Tools::pick_out_relay_rule($node->id, $user->port, $relay_rules);
@@ -206,7 +207,7 @@ class URL
                     }
                 }
             }
-         /*   if ($node->custom_rss == 1 && $node->mu_only != -1 && $is_mu != 0) {
+            if ($node->custom_rss == 1 && $node->mu_only != -1 && $is_mu != 0) {
                 foreach ($mu_nodes as $mu_node) {
                     if ($node->sort == 10) {
                         $relay_rule_id = 0;
@@ -227,13 +228,17 @@ class URL
                         }
                     }
                 }
-            }*/
+            }
         }
         return $return_array;
     }
     public static function getAllUrl($user, $is_mu, $is_ss = 0, $enter = 0) {
         $items = URL::getAllItems($user, $is_mu, $is_ss);
         $return_url = '';
+		if ($is_mu==8) {
+			$return_url .= URL::getItemUrl($user, !$is_ss).($enter == 0 ? ' ' : "\n");
+			$return_url .= URL::getItem($user, $node, 0, 0, $is_ss).($enter == 0 ? ' ' : "\n");
+		}
       	/*if ($user->transfer_enable >0&&$is_mu==0){
       		$return_url .= URL::getUserTraffic($user).($enter == 0 ? ' ' : "\n");
       		$return_url .= URL::getUserClassExpiration($user).($enter == 0 ? ' ' : "\n");
