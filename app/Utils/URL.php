@@ -237,7 +237,7 @@ class URL
         $return_url = '';
 		if ($is_mu==8) {
 			//$return_url .= URL::getItemUrl($user, !$is_ss).($enter == 0 ? ' ' : "\n");
-			$return_url .= URL::getItem($user, $node,$is_ss).($enter == 0 ? ' ' : "\n");
+			$return_url .= (URL::getItem($user, $node) . "/n");
 		}
       	/*if ($user->transfer_enable >0&&$is_mu==0){
       		$return_url .= URL::getUserTraffic($user).($enter == 0 ? ' ' : "\n");
