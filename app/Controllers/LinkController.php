@@ -1496,7 +1496,7 @@ FINAL,Proxy';
 
     public static function GetSSRSub($user, $mu = 0, $max = 0)
     {
-        if ($mu==0||$mu==1) {
+        if ($mu==0||$mu==1||$mu==8) {
             return Tools::base64_url_encode(URL::getAllUrl($user, $mu, 0, 1, 8));
         } 
 		elseif ($mu==2){
