@@ -158,27 +158,27 @@ class URL
         }
         if($is_mu) {
             if ($user->is_admin) {
-            	if ($is_mu!=1){
-            		$mu_nodes = Node::where('sort', 9)->where('server', '=', $is_mu)->where("type", "1")->get();
-            	}else{
+            	//if ($is_mu!=1){
+            	//	$mu_nodes = Node::where('sort', 9)->where('server', '=', $is_mu)->where("type", "1")->get();
+            	//}else{
                 	$mu_nodes = Node::where('sort', 9)->where("type", "1")->get();
-            	}
+            	//}
             } else {
-                if ($is_mu!=1){
+               /* if ($is_mu!=1){
                     $mu_nodes = Node::where('sort', 9)->where('server', '=', $is_mu)->where('node_class', '<=', $user->class)->where("type", "1")->where(
                         function ($query) use ($user) {
                             $query->where("node_group", "=", $user->node_group)
                                 ->orWhere("node_group", "=", 0);
                         }
                     )->get();
-                }else{
+                }else{*/
                     $mu_nodes = Node::where('sort', 9)->where('node_class', '<=', $user->class)->where("type", "1")->where(
                         function ($query) use ($user) {
                             $query->where("node_group", "=", $user->node_group)
                                 ->orWhere("node_group", "=", 0);
                         }
                     )->get();
-                }
+               // }
             }
         }
         $relay_rules = Relay::where('user_id', $user->id)->orwhere('user_id', 0)->orderBy('id', 'asc')->get();
@@ -186,7 +186,7 @@ class URL
             $relay_rules = array();
         }
         foreach ($nodes as $node) {
-            if ($node->mu_only != 1 && $is_mu == 0) {
+            if ($is_mu == 0) {
                 if ($node->sort == 10) {
                     $relay_rule_id = 0;
                     $relay_rule = Tools::pick_out_relay_rule($node->id, $user->port, $relay_rules);
@@ -206,7 +206,7 @@ class URL
                     }
                 }
             }
-            if ($node->custom_rss == 1 && $node->mu_only != -1 && $is_mu != 0) {
+         /*   if ($node->custom_rss == 1 && $node->mu_only != -1 && $is_mu != 0) {
                 foreach ($mu_nodes as $mu_node) {
                     if ($node->sort == 10) {
                         $relay_rule_id = 0;
@@ -227,7 +227,7 @@ class URL
                         }
                     }
                 }
-            }
+            }*/
         }
         return $return_array;
     }
