@@ -156,7 +156,6 @@ class URL
                 }
             )->where("type", "1")->where("node_class", "<=", $user->class)->orderBy("name")->get();
         }
-
         if($is_mu) {
             if ($user->is_admin) {
             	if ($is_mu!=1){
@@ -235,10 +234,6 @@ class URL
     public static function getAllUrl($user, $is_mu, $is_ss = 0, $enter = 0) {
         $items = URL::getAllItems($user, $is_mu, $is_ss);
         $return_url = '';
-		if ($is_mu==8) {
-			//$return_url .= URL::getItemUrl($user, !$is_ss).($enter == 0 ? ' ' : "\n");
-			$return_url .= (URL::getItem($user, $node) . "/n");
-		}
       	/*if ($user->transfer_enable >0&&$is_mu==0){
       		$return_url .= URL::getUserTraffic($user).($enter == 0 ? ' ' : "\n");
       		$return_url .= URL::getUserClassExpiration($user).($enter == 0 ? ' ' : "\n");
